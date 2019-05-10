@@ -1,0 +1,38 @@
+// LL(1) Grammar for selector
+
+S -> EK                      // Selector list
+K -> , E | ε
+
+E -> L G                     // selector expression
+G -> > R | < R | ε           // complex selector
+
+L -> TDF                     // simple Leftmost selector
+D -> [A] | ε
+F -> #ZF | .ZF | :ZF | ε     // attribute shortcuts and events
+
+A -> ZX                      // attribute check of selector
+X -> Y | = ZY | ~= ZY | != ZY | < ZY | > ZY
+Y -> , A | ε
+
+R -> TPDFG                   // selector on the right side of another selector.
+
+P -> * | int | ε             // Parameter for right side selector
+T -> l | e                   // type of the selector
+
+Z -> string                  // consumes all characters until one of the possible following characters is found (same for int maybe with number check)
+
+
+
+// LL(1) Grammar for rule
+
+R -> V | C | I;                         // attribute rule
+
+V -> Z                                      // simple value that will be set directly
+C -> (Z, Z, Z, Z) | (Z, Z, Z) | 0xZ | #Z    // color value for attribute
+I -> T(P).using(Z)                            // Interpolator expression
+P -> Z=ZQ | Z=CQ                            // control points for interpolation
+Q -> ,PQ | ε              
+
+T -> lin                                // interpolation type
+Z -> string                             // consumes all characters until one of the possible following characters is found (same for int maybe with number check)
+
