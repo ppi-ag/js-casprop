@@ -1,31 +1,27 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+  grunt.initConfig({
+      browserify: {
+          development: {
+              src: [
+                  "./src/explorer-css.js"
+              ],
+              dest: './dist/explorer-css-bundled.js',
+              options: {
+                  browserifyOptions: { debug: true, standalone: 'ExpCSS', watch: true, keepAlive: true}
+              }
+          },
+          production:{
+            src: [
+              "./src/explorer-css.js"
+            ],
+            dest: './dist/explorer-css-bundled.min.js',
+            options: {
+                browserifyOptions: { debug: false, standalone: 'ExpCSS'}
+            },
+            plugin: [["minifyify", { map: false }]]
 
-    // Project configuration.
-    grunt.initConfig({
-      pkg: grunt.file.readJSON('package.json'),
-      uglify: {
-        options: {
-          mangle: true,
-          banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
-        },
-        build: {
-          src: 'src/<%= pkg.name %>.js',
-          dest: 'build/<%= pkg.name %>.min.js'
-        }
-      },
-      jshint: {
-        files: ['src/*.js'],
-        options: {
-            'esversion': 6,
-        }
-    },
-    });
-  
-    // Load the plugin that provides the "uglify" task.
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-  
-    // Default task(s).
-    grunt.registerTask('default', ['jshint','uglify']);
-  
-  };
+          }
+      }
+  });
+  grunt.loadNpmTasks('grunt-browserify');
+};
