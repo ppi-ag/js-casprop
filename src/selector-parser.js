@@ -2,8 +2,9 @@ const {Parser} = require("./parser.js");
 const {explorerEvent, EventState} = require("./events.js");
 
 class SelectorParser extends Parser {
-    constructor() {
+    constructor(configuration) {
         super();
+        this._config = configuration;
     }
 
     parseSelector(string, idx) {
@@ -23,14 +24,14 @@ class SelectorParser extends Parser {
             }
 
         } while (this._curChar() == ',' && this._nextChar())
-        var sel = new Selector(list);
+        var sel = new Selector(list, this._config);
 
         if (list.length == 0) {
             sel.valid = false;
             this._error("Block " + (this._block + 1) + " has been skipped, because there was no valid selector.");
         }
 
-        return new Selector(list);
+        return sel;
     }
 
     _parseExpression() {
@@ -221,15 +222,16 @@ class Node {
         this.valid = true;
     }
 }
-
+// TODO: allow better customization of class location
 class Selector extends Node {
-    constructor(expressions) {
+    constructor(expressions, config) {
         super();
-        this.expressions = expressions;
+        this._expressions = expressions;
+        this._config = config;
     }
 
     validateObject(obj){
-       return obj.hasOwnProperty('class');
+       return obj.hasOwnProperty(this._config.classProperty);
     }
 
     test(obj, sty){
@@ -238,19 +240,19 @@ class Selector extends Node {
             return false;
         }
 
-        if(this.expressions.every(exp => {return exp.eventState != undefined && sty.eventState.state != exp.eventState.state})){
+        if(this._expressions.every(exp => {return exp.eventState != undefined && sty.eventState.state != exp.eventState.state})){
             return false;
         }
 
-        return this.expressions.some(exp => {
+        return this._expressions.some(exp => {
             //differentiate between links and entities
-            if(exp.type != obj.class){
+            if(exp.type != obj[this._config.classProperty]){
                 return false
             }
 
             return exp.attrChecklist.every(attrCheck => {
 
-                if(attrCheck.comparator == undefined || attrCheck.value == undefined){
+                if(attrCheck.comparator === undefined || attrCheck.value === undefined){
                     return obj.hasOwnProperty(attrCheck.id);
                 } else {
                     if(!obj.hasOwnProperty(attrCheck.id)){

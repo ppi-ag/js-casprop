@@ -4,8 +4,8 @@ const {RuleParser} = require("./rule-parser.js");
 const Events = require("./events.js");
 
 class ExplorerCSS {
-
-    constructor(){
+    // className describes the object attribute of the style base, which either contains 'l' for link or 'e' for entity. Defaults to 'class'.
+    constructor(classProperty='class'){
         //initialize parser object
         this._parser = new _cssjs.cssjs();
 
@@ -14,6 +14,10 @@ class ExplorerCSS {
 
         //parsed css blocks ready to be applied to objects
         this.stylings = [];
+
+        this.selectorConfig = {
+            classProperty: classProperty,
+        }
     }
    
 
@@ -21,8 +25,8 @@ class ExplorerCSS {
     parse(cssString) {
         this.rawCSS = this._parser.parseCSS(cssString);
 
-        var sp = new SelectorParser();
-        var rp = new RuleParser();
+        let rp = new RuleParser();
+        let sp = new SelectorParser(this.selectorConfig);
 
         this.rawCSS.forEach((element, i) => {
             var style = new Styling();
@@ -63,15 +67,3 @@ class Styling {
 
 module.exports = {"ExplorerCSS": ExplorerCSS,
                   "Event":Events}
-
-//var expcss = new ExplorerCSS();
-
-//expcss.parse('e[attr, attr ~= test].someSelector :onHover:onSelect #myName.otherSelector > e5[testA, testA > b].pack:onHover#id < e* { margin:40px 10px; padding:5px; test:lin(5=10, 8=20).using(pages); color:lin(5=(5,100,20), 10=(20,50,10)).using(pages);}');
-//expcss.parse('e[pages]:test { margin:40px 10px; padding:5px; test:lin(5=10, 8=20).using(pages); color:lin(5=(5,100,20), 10=(20,50,10)).using(pages);}');
-
-//var testObj = {
-//    'type':'e',
-//    'pages': 7
-//}
-//expcss.style(testObj);
-//console.log(JSON.stringify(testObj, undefined, 2));
