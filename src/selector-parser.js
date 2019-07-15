@@ -265,7 +265,7 @@ class Selector extends Node {
                         case '!=':
                             return (obj[attrCheck.id] != attrCheck.value);
                         case '~=':
-                            return (obj[attrCheck.id].split(" ").includes(attrCheck.value));
+                            return (obj[attrCheck.id].split(this._config.attributeListSeparator).includes(attrCheck.value));
                         case '>' :
                             return (obj[attrCheck.id] > attrCheck.value);
                         case '<' :

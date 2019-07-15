@@ -5,7 +5,7 @@ const Events = require("./events.js");
 
 class ExplorerCSS {
     // className describes the object attribute of the style base, which either contains 'l' for link or 'e' for entity. Defaults to 'class'.
-    constructor(classProperty='class'){
+    constructor(classProperty='class', attributeListSeparator=' '){
         //initialize parser object
         this._parser = new _cssjs.cssjs();
 
@@ -17,6 +17,7 @@ class ExplorerCSS {
 
         this.selectorConfig = {
             classProperty: classProperty,
+            attributeListSeparator: attributeListSeparator,
         }
     }
    
