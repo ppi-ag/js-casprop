@@ -54,7 +54,7 @@ class ExplorerCSS {
     //modifies the given style based on the given object
     style(obj, sty) {
         this.stylings.forEach(style => style.apply(obj, sty));
-    } 
+    }
 }
 
 class Styling {

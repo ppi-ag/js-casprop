@@ -3,7 +3,9 @@ const explorerEvent = Object.freeze({
     onmouseover: 1 << 31,
     onclick: 1 << 30,
     onselect: 1 << 29,
-    onfold: 1 << 28
+    onfold: 1 << 28,
+    onin: 1 << 27, // only supposed to be used with onselect and maybe onfold
+    onout: 1 << 26 // -- see above
 });
 
 // Handles events for the expcss parser
