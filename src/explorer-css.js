@@ -35,12 +35,12 @@ class ExplorerCSS {
 
         this.rawCSS.forEach((element, i) => {
             var style = new Styling();
-            var normalizedSelector = element.selector.split(' ').join('').toLowerCase();
+            var normalizedSelector = element.selector.split(' ').join('');
 
             style.selector = sp.parseSelector(normalizedSelector, i);
 
             element.rules.forEach((element, i) => {
-                var rule = rp.parseRule(element.directive, element.value.split(' ').join('').toLowerCase());
+                var rule = rp.parseRule(element.directive, element.value.split(' ').join(''));
 
                 if(rule._valid){
                     style.rules.push(rule);
