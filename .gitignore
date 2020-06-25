@@ -1,0 +1,9 @@
+node_modules/
+.vscode/
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.d

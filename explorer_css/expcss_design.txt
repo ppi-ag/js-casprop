@@ -1,0 +1,47 @@
+color: (255,255,255,255)
+thickness: 5
+size: 6.2
+type: bidirectional
+
+thickness: lin(5, 2 = 10, 10 = 10, 10).use(property) 
+color: lin(0 = (0,0,0,0), 100 = (255,255,255,255)).use(property)
+
+Ein Selektor ist immer entweder für einen link oder für eine entity und nie für beides. Es können jedoch selektoren verschiedener Typen aufgelistet werden.
+Der zuletzt geschriebene teil eines Selektors beschreibt fast immer das betroffene Element!
+
+e[attr = val]#id > e { // alle knoten die direktes kind eines Knotens mit Attribut attr, wert val und id "id" sind
+
+}
+
+e[attr = val] < e { // alle knoten die als direktes Kind einen Knoten mit Attribut attr und wert val haben
+
+}
+
+e[attr = val] > e* { // alle Kinder Knoten eines Knotens mit Attribut attr und wert val
+
+}
+
+e[attr = val] > e5[attr2 = val2] { // Kinder Knoten mit Tiefe 5 und Attribut attr2 und Wert val2 eines Knotens mit Attribut attr und wert val
+
+}
+
+e[attr = val] > l { // alle Links die direkt von einem Knoten mit attr = val ausgehen
+
+}
+
+e[attr = val] > l*.dependency { // alle Links mit der klasse dependency die von einem Knoten mit attr = val erreichbar sind (die verbindenden links müssen ebenfalls die Klasse dependency besitzen)
+
+}
+
+e[...], l[...] { // mehrere Selektoren mit dem selben style
+
+}
+
+e[attr] {} // alle knoten mit Attribut attr
+
+e[attr].package {} // alle Knoten mit Klasse package und Attribut attr
+
+e:hover {} // Alle Knoten, die einen Mauszeiger über sich haben
+
+e:hover:selected {} // Alle Knoten, die ausgewählt sind und einen Mauszeiger über sich haben
+

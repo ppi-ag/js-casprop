@@ -1,0 +1,32 @@
+{
+  "name": "explorer-css",
+  "version": "0.3.1",
+  "description": "Module for parsing codeexplorer css files.",
+  "main": "explorercss.js",
+  "dependencies": {
+    "jotform-css.js": "^1.0.1",
+    "proxyquire": "^2.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "grunt": "^1.0.4",
+    "grunt-browserify": "^5.3.0",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-uglify": "^4.0.0",
+    "minifyify": "^7.3.5",
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "style",
+    "css",
+    "parsing"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "author": "Marco Deneke",
+  "license": "MIT"
+}
