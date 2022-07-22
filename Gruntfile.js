@@ -18,8 +18,6 @@ module.exports = function (grunt) {
             options: {
                 browserifyOptions: { debug: false, standalone: 'ExpCSS'}
             },
-            plugin: [["minifyify", { map: false }]]
-
           }
       }
   });
