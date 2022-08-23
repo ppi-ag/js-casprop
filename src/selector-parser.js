@@ -204,6 +204,7 @@ class SelectorParser extends Parser {
     }
 
     _parseType(node) {
+        //TODO: create configurable type list
         if (this._curChar() == "l") {
             node.type = "l";
         } else if (this._curChar() == "e") {

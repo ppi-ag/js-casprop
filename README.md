@@ -1,13 +1,19 @@
-ExplorerCSS Project.
+js-casprop Project.
 
-Nach erstem klonen
+after first clone run
 
 ```
 npm install
 ```
-ausführen.
 
-JavaScript Projekte mit Gruntfile bauen mithilfe von:
+and build with
+
 ```
-grunt browserify
+npm run build
+```
+
+or without minimization
+
+```
+npm run dev
 ```

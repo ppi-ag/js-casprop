@@ -1,32 +1,28 @@
 {
-  "name": "explorer-css",
-  "version": "0.3.3",
-  "description": "Module for parsing codeexplorer css files.",
-  "main": "explorer-css.js",
+  "name": "js-casprop",
+  "version": "0.4.0",
+  "description": "Module for parsing files containing cascading javaScript object properties.",
+  "main": "dist/js-casprop.umd.js",
+  "module": "dist/js-casprop.esm.js",
   "dependencies": {
     "jotform-css.js": "^1.0.1"
   },
   "devDependencies": {
-    "proxyquire": "^2.1.0",
-    "chai": "^4.3.6",
-    "grunt": "^1.5.3",
-    "grunt-cli": "^1.4.3",
-    "grunt-browserify": "^6.0.0",
-    "grunt-contrib-jshint": "^3.2.0",
-    "grunt-contrib-uglify": "^5.2.2",
-    "mocha": "^10.0.0"
+    "terser-webpack-plugin": "^5.3.5",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   },
   "scripts": {
-    "test": "mocha"
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development"
   },
   "keywords": [
-    "style",
-    "css",
     "parsing"
   ],
-  "directories": {
-    "test": "test"
-  },
   "author": "Marco Deneke",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "<fill in github repo>"
+  }
 }
