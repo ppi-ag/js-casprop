@@ -1,9 +1,9 @@
-const _cssjs = require("../node_modules/jotform-css.js/css.js");
+const _cssjs = require("jotform-css.js");
 const {SelectorParser} = require("./selector-parser.js");
 const {RuleParser} = require("./rule-parser.js");
 const Events = require("./events.js");
 
-class ExplorerCSS {
+class JsCasProp {
     // className describes the object attribute of the style base, which either contains 'l' for link or 'e' for entity. Defaults to 'class'.
     constructor(config){
         //initialize parser object
@@ -11,7 +11,8 @@ class ExplorerCSS {
 
         this._parameters = {
             classProperty: 'class',
-            tagListSeparator:' ' 
+            tagListSeparator: ' ',
+            events: Events.explorerEvent,
         };
 
         //Array of css units {selector = "", rules = [{directive = "", value  = ""} ...]}
@@ -24,7 +25,6 @@ class ExplorerCSS {
 
         this.selectorConfig = this._parameters;
     }
-   
 
     //file input for the parser as string
     parse(cssString) {
@@ -70,5 +70,5 @@ class Styling {
     }
 }
 
-module.exports = {"ExplorerCSS": ExplorerCSS,
-                  "Event":Events}
+module.exports = {"JsCasProp": JsCasProp,
+                  "DefaultEvents": Events}
