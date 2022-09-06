@@ -36,6 +36,7 @@ In this case the queried object q needs to look like this:
 
 ```
 {
+     'class':'e'
      'type':'class'
 }
 ```
