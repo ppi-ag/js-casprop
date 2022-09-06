@@ -10,7 +10,7 @@ var config = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js-casprop-bundled.min.js',
     library: {
-        name: 'jsCasProp',
+        name: 'JsCasProp',
         type: 'umd'
     },
   },

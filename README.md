@@ -48,6 +48,12 @@ All Properties in the body of a rule describe what is going to be written into t
 
 ### Installing
 
+E.g. add the library to your index.html:
+
+```
+    <script src="./lib/js-casprop-bundled.min.js"></script>
+```
+
 **this is not yet available**
 ```
 npm install js-casprop
@@ -58,11 +64,11 @@ npm install js-casprop
 * Create an instance
 
 ```
-const js-casprop = new JsCasProp.JsCasProp();
+const js-casprop = new window.JsCasProp.JsCasProp();
 ```
 * Configure the instance using the constructor parameter
 ```
-const js-casprop = new new JsCasProp.JsCasProp({
+const js-casprop = new window.JsCasProp.JsCasProp({
             classProperty: 'class', // the property of the queried object storing the object class identifying a group of similar objects
             tagListSeparator: ' ', // seperator for a "tag" field inside the queried object which contains a list of separate tags
             events: Events.explorerEvent, // object containing all events that are usable with e.g. the e:onclick selector
