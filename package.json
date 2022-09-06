@@ -19,8 +19,8 @@
   "keywords": [
     "parsing"
   ],
-  "author": "Marco Deneke",
-  "license": "MIT",
+  "author": "PPI AG",
+  "license": "CC-BY-4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/ppi-ag/js-casprop"
